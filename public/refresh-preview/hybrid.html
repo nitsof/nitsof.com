@@ -916,6 +916,86 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
 }
 
 /* -------------------------------------------------------------------------
+   INSIGHTS SECTION
+   ------------------------------------------------------------------------- */
+.insights {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) var(--pad);
+  border-top: 1px solid var(--rule);
+}
+.insights-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 3rem;
+}
+@media (min-width: 760px) {
+  .insights-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.insight-card {
+  padding: 2rem 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: none;
+}
+@media (min-width: 760px) {
+  .insight-card { padding: 0 2rem 0 0; border-top: none; border-left: 1px solid var(--rule); }
+  .insight-card:first-child { padding-left: 0; border-left: none; }
+}
+.insight-cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+.insight-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  transition: color .25s ease;
+}
+.insight-card:hover .insight-title { color: var(--cobalt); }
+.insight-excerpt {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  flex: 1;
+}
+.insight-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 0.4rem;
+}
+.insights-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  text-decoration: none;
+  border-bottom: 1px solid var(--cobalt);
+  padding-bottom: 2px;
+  transition: opacity .2s ease;
+}
+.insights-all:hover { opacity: 0.7; }
+
+/* -------------------------------------------------------------------------
    CTA BLOCK
    ------------------------------------------------------------------------- */
 .cta {
@@ -929,12 +1009,12 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
   background: var(--ink);
   color: var(--cream);
   border-radius: 8px;
-  padding: clamp(2.5rem, 7vw, 6rem) clamp(2rem, 6vw, 5rem);
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(2rem, 6vw, 5rem);
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
 }
-@media (min-width: 900px) { .cta-card { grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: end; } }
+@media (min-width: 900px) { .cta-card { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
 .cta-card::before {
   content: "";
   position: absolute;
@@ -948,40 +1028,99 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
 .cta h2 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.2rem, 6vw, 5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   line-height: 0.95;
   letter-spacing: -0.04em;
   text-wrap: balance;
 }
 .cta h2 em { font-style: normal; color: var(--signal); font-weight: 300; }
 .cta .lead { color: color-mix(in srgb, var(--cream) 75%, transparent); max-width: 36ch; margin-top: 1.5rem; }
-.cta-aside {
+.cta .direct-line {
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cream) 50%, transparent);
+}
+.cta .direct-line a {
+  display: inline;
+  color: color-mix(in srgb, var(--cream) 75%, transparent);
+  transition: color .2s ease;
+}
+.cta .direct-line a:hover { color: var(--signal); }
+.cta-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  align-self: end;
+  gap: 1rem;
 }
-.cta-email {
+.cta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.cta-field label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--cream) 55%, transparent);
+  color: color-mix(in srgb, var(--cream) 50%, transparent);
 }
-.cta-email a {
-  display: block;
-  font-family: var(--font-display);
-  text-transform: none;
-  letter-spacing: -0.01em;
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+.cta-field input,
+.cta-field textarea {
+  background: color-mix(in srgb, var(--cream) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cream) 20%, transparent);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
   color: var(--cream);
-  font-weight: 500;
-  margin-top: 0.4rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--cream) 30%, transparent);
-  padding-bottom: 0.7rem;
-  transition: color .25s ease, border-color .25s ease;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color .2s ease;
+  outline: none;
 }
-.cta-email a:hover { color: var(--signal); border-color: var(--signal); }
+.cta-field input:focus,
+.cta-field textarea:focus {
+  border-color: var(--cobalt);
+}
+.cta-field input::placeholder,
+.cta-field textarea::placeholder {
+  color: color-mix(in srgb, var(--cream) 30%, transparent);
+}
+.cta-field textarea { resize: vertical; min-height: 100px; }
+.cta-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.4rem;
+  background: var(--cream);
+  color: var(--ink);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: transform .25s ease, background .25s ease;
+  margin-top: 0.5rem;
+}
+.cta-submit:hover { background: var(--signal); transform: translateY(-2px); }
+.cta-submit svg { margin-left: auto; }
+.cta-success {
+  display: none;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--signal) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--signal) 40%, transparent);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--signal);
+  text-transform: uppercase;
+}
 .cta-btn {
   display: inline-flex;
   align-items: center;
@@ -1209,6 +1348,7 @@ body.past-hero .hamburger span { background: var(--ink); }
     <a href="#capabilities">Capabilities</a>
     <a href="#process">Process</a>
     <a href="#about">Studio</a>
+    <a href="#insights">Insights</a>
   </nav>
   <a class="nav-cta" href="#contact">
     Start a project
@@ -1225,6 +1365,7 @@ body.past-hero .hamburger span { background: var(--ink); }
   <a href="#capabilities" class="mobile-link">Capabilities</a>
   <a href="#process" class="mobile-link">Process</a>
   <a href="#about" class="mobile-link">Studio</a>
+  <a href="#insights" class="mobile-link">Insights</a>
   <a class="menu-cta" href="#contact">
     Start a project
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1478,22 +1619,68 @@ body.past-hero .hamburger span { background: var(--ink); }
   </div>
 </section>
 
+<!-- INSIGHTS SECTION ------------------------------------------------------- -->
+<section class="insights" id="insights">
+  <div class="section-label reveal">§ Insights</div>
+  <h2 class="section-head reveal" style="margin-top:0.8rem">
+    Thinking out loud<br>on software &amp; <em>craft</em>.
+  </h2>
+  <div class="insights-grid">
+    <a class="insight-card reveal" href="/insights/ai-native-delivery">
+      <span class="insight-cat">Engineering</span>
+      <h3 class="insight-title">Why AI-native delivery cuts timelines in half — and what most teams miss</h3>
+      <p class="insight-excerpt">The models aren't the bottleneck. The missing piece is changing how you scope, review, and ship. Here's what two years of AI-first projects taught us.</p>
+      <span class="insight-meta">May 2026 · 6 min read</span>
+    </a>
+    <a class="insight-card reveal" href="/insights/shopify-shipping-complexity">
+      <span class="insight-cat">Product</span>
+      <h3 class="insight-title">The hidden complexity behind Shopify shipping rates</h3>
+      <p class="insight-excerpt">Building Live Carrier Rates taught us that "show the right price at checkout" is deceptively hard. Carrier APIs, real-time latency, and Shopify's rate model all conspire against you.</p>
+      <span class="insight-meta">April 2026 · 8 min read</span>
+    </a>
+    <a class="insight-card reveal" href="/insights/from-prototype-to-production">
+      <span class="insight-cat">Studio</span>
+      <h3 class="insight-title">From prototype to production in four weeks — the NITSOF method</h3>
+      <p class="insight-excerpt">Four weeks isn't a sprint. It's a constraint that forces the right decisions early. This is how we structure engagements so nothing important gets built twice.</p>
+      <span class="insight-meta">March 2026 · 5 min read</span>
+    </a>
+  </div>
+  <a class="insights-all" href="/insights">
+    All insights
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
 <!-- CTA BLOCK -------------------------------------------------------------- -->
 <section class="cta" id="contact">
   <div class="cta-card">
     <div class="reveal">
       <h2>Have something you'd ship if it were <em>easy</em>?</h2>
-      <p class="lead">Tell us what you're trying to build. We respond within one working day with either a plan or an honest reason why we're not the right studio for it.</p>
+      <p class="lead">Tell us what you're trying to build. We respond within one working day — with either a plan or an honest reason why we're not the right studio for it.</p>
+      <p class="direct-line" style="margin-top:2rem">Or email us directly: <a href="mailto:hello@nitsof.com">hello@nitsof.com</a></p>
     </div>
-    <div class="cta-aside reveal">
-      <div class="cta-email">
-        Direct line
-        <a href="mailto:hello@nitsof.com">hello@nitsof.com</a>
+    <div class="reveal">
+      <form class="cta-form" id="contact-form" onsubmit="handleContactSubmit(event)">
+        <div class="cta-field">
+          <label for="cf-name">Your name</label>
+          <input id="cf-name" name="name" type="text" placeholder="Alex Chen" required autocomplete="name">
+        </div>
+        <div class="cta-field">
+          <label for="cf-company">Company or website</label>
+          <input id="cf-company" name="company" type="text" placeholder="acmecorp.com" autocomplete="organization">
+        </div>
+        <div class="cta-field">
+          <label for="cf-message">What are you trying to build?</label>
+          <textarea id="cf-message" name="message" placeholder="We need to ship X by Y and our current approach isn't working because…" required></textarea>
+        </div>
+        <button class="cta-submit" type="submit">
+          Send brief
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+      <div class="cta-success" id="contact-success">
+        Message sent — we'll be in touch within one working day.
       </div>
-      <a class="cta-btn" href="mailto:hello@nitsof.com">
-        Start a brief
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
     </div>
   </div>
 </section>
@@ -1555,6 +1742,25 @@ body.past-hero .hamburger span { background: var(--ink); }
       const total = document.documentElement.scrollHeight - window.innerHeight;
       progressBar.style.width = total > 0 ? (scrolled / total * 100) + "%" : "0%";
     }, { passive: true });
+  }
+
+  // Contact form — opens pre-filled mailto so the preview works without a backend
+  function handleContactSubmit(e) {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const name    = data.get("name")    || "";
+    const company = data.get("company") || "";
+    const message = data.get("message") || "";
+    const body = [
+      `Name: ${name}`,
+      company ? `Company: ${company}` : "",
+      "",
+      message,
+    ].filter(Boolean).join("\n");
+    window.location.href = `mailto:hello@nitsof.com?subject=${encodeURIComponent("Project Brief — " + name)}&body=${encodeURIComponent(body)}`;
+    const form    = document.getElementById("contact-form");
+    const success = document.getElementById("contact-success");
+    if (form && success) { form.style.display = "none"; success.style.display = "block"; }
   }
 
   // Mobile hamburger
