@@ -1280,17 +1280,24 @@ button { font: inherit; cursor: pointer; }
 </footer>
 
 <script>
-  // Stagger reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        e.target.classList.add("in");
-        io.unobserve(e.target);
-      }
-    }
-  }, { rootMargin: "-8% 0px -8% 0px", threshold: 0.05 });
+  // ?static=1 — bypass reveal animations (used for screenshot capture)
+  const STATIC = new URLSearchParams(location.search).has("static");
+  const els = document.querySelectorAll(".reveal");
 
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  if (STATIC) {
+    els.forEach(el => el.classList.add("in"));
+  } else {
+    // Stagger reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      }
+    }, { rootMargin: "-8% 0px -8% 0px", threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+  }
 </script>
 </body>
 </html>
