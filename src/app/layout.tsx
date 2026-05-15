@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NITSOF - Powerful Shopify Apps",
+  title: "NITSOF – AI Software Delivery for Businesses",
   description:
-    "Explore our collection of powerful Shopify applications designed to optimize your store, enhance customer engagement, and boost your sales.",
+    "NITSOF helps businesses of all sizes innovate and ship software faster using AI. Explore our products and see what AI-powered software delivery looks like in practice.",
 };
 
 export default function RootLayout({
