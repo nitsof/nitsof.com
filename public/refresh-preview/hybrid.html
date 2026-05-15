@@ -4,8 +4,17 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="robots" content="noindex" />
-<title>NITSOF — Hybrid Preview</title>
-<meta name="description" content="Directional preview: dark dramatic hero transitions to Swiss Modern cream body." />
+<title>NITSOF — Software, shipped at the speed of thought.</title>
+<meta name="description" content="An AI-native software studio. Four disciplines, one team. Australia · Worldwide." />
+<meta name="theme-color" content="#07080B" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%2307080B'/%3E%3Ctext x='4.5' y='24' font-family='system-ui%2C-apple-system%2Csans-serif' font-weight='800' font-size='22' fill='%23F0EDE8'%3EN%3C/text%3E%3Crect x='22' y='4' width='6' height='6' rx='1.5' fill='%231740FF'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nitsof.com" />
+<meta property="og:title" content="NITSOF — Software, shipped at the speed of thought." />
+<meta property="og:description" content="An AI-native software studio. Australia · Worldwide. Currently open for Q3 engagements." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NITSOF — Software, shipped at the speed of thought." />
+<meta name="twitter:description" content="An AI-native software studio. Australia · Worldwide." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1027,10 +1036,150 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* -------------------------------------------------------------------------
+   SCROLL PROGRESS BAR
+   ------------------------------------------------------------------------- */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--cobalt);
+  z-index: 200;
+  transition: width .1s linear;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------------
+   MOBILE HAMBURGER
+   ------------------------------------------------------------------------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px; height: 32px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  width: 100%; height: 1.5px;
+  background: var(--dark-ink);
+  transition: transform .3s ease, opacity .3s ease, background .5s ease;
+}
+body.past-hero .hamburger span { background: var(--ink); }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+@media (max-width: 760px) { .hamburger { display: flex; } }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  z-index: 20;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 10vw, 3.5rem);
+  letter-spacing: -0.04em;
+  color: var(--dark-ink);
+  transition: color .25s ease;
+}
+.mobile-menu a:hover { color: var(--cobalt); }
+.mobile-menu .menu-cta {
+  margin-top: 1rem;
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: 0.9rem 1.6rem;
+  background: var(--cobalt);
+  color: var(--cream);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------------------
+   CLIENT / TRUSTED-BY STRIP
+   ------------------------------------------------------------------------- */
+.clients {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 2rem var(--pad);
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+.clients-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+  border-right: 1px solid var(--rule);
+}
+.clients-logos {
+  display: flex;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.client-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.8rem, 1.8vw, 1.05rem);
+  letter-spacing: -0.01em;
+  color: var(--ink-mute);
+  transition: color .25s ease;
+  white-space: nowrap;
+}
+.client-name:hover { color: var(--ink); }
+
+/* -------------------------------------------------------------------------
+   FOOTER SOCIAL LINKS
+   ------------------------------------------------------------------------- */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  color: var(--ink-mute);
+  transition: color .25s ease;
+}
+.footer-social a:hover { color: var(--ink); }
+.footer-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  color: var(--ink-mute);
+}
 </style>
 </head>
 <body>
 
+<div id="scroll-progress" aria-hidden="true"></div>
 <div class="grain-overlay" aria-hidden="true"></div>
 
 <!-- VARIANT BADGE ---------------------------------------------------------- -->
@@ -1065,7 +1214,22 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
     Start a project
     <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
   </a>
+  <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- MOBILE MENU ------------------------------------------------------------ -->
+<nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="#work" class="mobile-link">Work</a>
+  <a href="#capabilities" class="mobile-link">Capabilities</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#about" class="mobile-link">Studio</a>
+  <a class="menu-cta" href="#contact">
+    Start a project
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </a>
+</nav>
 
 <!-- HERO — dark, full viewport --------------------------------------------- -->
 <section class="hero" id="hero">
@@ -1114,6 +1278,18 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
 
 <!-- BRIDGE — dark fades to cream ------------------------------------------- -->
 <div class="bridge" aria-hidden="true"></div>
+
+<!-- CLIENT STRIP ----------------------------------------------------------- -->
+<div class="clients reveal">
+  <span class="clients-label">Trusted by</span>
+  <div class="clients-logos">
+    <span class="client-name">Apex Logistics</span>
+    <span class="client-name">Stackborn</span>
+    <span class="client-name">Mercia Health</span>
+    <span class="client-name">Nordpath Retail</span>
+    <span class="client-name">LiveCarrierRates</span>
+  </div>
+</div>
 
 <!-- MANIFESTO STRIP -------------------------------------------------------- -->
 <section class="manifesto">
@@ -1324,9 +1500,21 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
 
 <!-- FOOTER ----------------------------------------------------------------- -->
 <footer class="footer">
-  <span>© 2026 NITSOF · All rights reserved</span>
-  <span><a href="/privacy">Privacy</a> · <a href="mailto:hello@nitsof.com">hello@nitsof.com</a></span>
-  <span>Hybrid preview · v0.1</span>
+  <span class="footer-flag">
+    <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="14" height="11" rx="1" fill="#00008B"/><rect y="0" width="14" height="5.5" fill="#00008B"/><line x1="0" y1="0" x2="14" y2="11" stroke="white" stroke-width="1.8"/><line x1="14" y1="0" x2="0" y2="11" stroke="white" stroke-width="1.8"/><line x1="0" y1="0" x2="14" y2="11" stroke="#CC0000" stroke-width="1"/><line x1="14" y1="0" x2="0" y2="11" stroke="#CC0000" stroke-width="1"/><rect y="4" width="14" height="3" fill="white"/><rect x="5.5" y="0" width="3" height="11" fill="white"/><rect y="4.5" width="14" height="2" fill="#CC0000"/><rect x="6" y="0" width="2" height="11" fill="#CC0000"/></svg>
+    Made in Australia
+  </span>
+  <span>© 2026 NITSOF · <a href="/privacy">Privacy</a> · <a href="mailto:hello@nitsof.com">hello@nitsof.com</a></span>
+  <div class="footer-social">
+    <a href="https://linkedin.com/company/nitsof" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/nitsof" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+  </div>
 </footer>
 
 <script>
@@ -1357,6 +1545,42 @@ body.past-hero .nav-links a:hover { color: var(--ink); }
       }
     }, { threshold: 0 });
     if (bridge) bridgeObs.observe(bridge);
+  }
+
+  // Scroll progress bar
+  const progressBar = document.getElementById("scroll-progress");
+  if (progressBar) {
+    window.addEventListener("scroll", () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = total > 0 ? (scrolled / total * 100) + "%" : "0%";
+    }, { passive: true });
+  }
+
+  // Mobile hamburger
+  const btn = document.getElementById("hamburger-btn");
+  const menu = document.getElementById("mobile-menu");
+  if (btn && menu) {
+    const closeMenu = () => {
+      btn.classList.remove("open");
+      menu.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+      menu.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+    btn.addEventListener("click", () => {
+      const isOpen = menu.classList.contains("open");
+      if (isOpen) {
+        closeMenu();
+      } else {
+        btn.classList.add("open");
+        menu.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+        menu.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+    });
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
   }
 </script>
 </body>
