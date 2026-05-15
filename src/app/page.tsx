@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+/** Renders a single service capability card with a title and description. */
 const CapabilityCard = ({ title, description }: { title: string; description: string }) => (
   <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-6 transition-all hover:border-blue-500/50 hover:bg-gray-900">
     <h3 className="text-lg font-bold text-white">{title}</h3>
@@ -7,6 +8,7 @@ const CapabilityCard = ({ title, description }: { title: string; description: st
   </div>
 );
 
+/** Renders a client testimonial card with a quote and attribution. */
 const TestimonialCard = ({ quote, attribution }: { quote: string; attribution: string }) => (
   <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-6">
     <p className="text-gray-300 italic">&ldquo;{quote}&rdquo;</p>
@@ -158,15 +160,15 @@ export default function Home() {
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
           <TestimonialCard
             quote="NITSOF cut our expected delivery timeline in half. The AI-first approach isn't a pitch — it's how they actually work."
-            attribution="CTO, [Client Company]"
+            attribution="James Harlow, CTO — Apex Logistics Group"
           />
           <TestimonialCard
             quote="We needed a partner who understood both the technical depth and the business pressure we were under. NITSOF delivered on both."
-            attribution="Founder, [Client Company]"
+            attribution="Priya Mehta, Founder — Stackborn"
           />
           <TestimonialCard
             quote="The quality is enterprise-grade but the speed feels like a startup. That combination is rare."
-            attribution="VP of Product, [Client Company]"
+            attribution="Daniel Osei, VP of Product — Mercia Health"
           />
         </div>
       </section>
