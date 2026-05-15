@@ -1,57 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-type="swiss">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="robots" content="noindex" />
-<title>NITSOF — Brand Refresh Preview</title>
-<meta name="description" content="A directional preview of a refreshed NITSOF identity: simplicity, confidence, future." />
+<title>NITSOF — Swiss Modern Preview</title>
+<meta name="description" content="Directional preview of a refreshed NITSOF identity: Swiss Modern variant — General Sans + Switzer, sans-serif." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
 
-<!--
-  Typography schemes — switchable via ?type= (chip in bottom-right of the preview).
-    A (default)  · Editorial Bold     · Fraunces + Manrope        — strong character, expressive italic
-    B (editorial)· Editorial Calm     · Newsreader + Inter Tight  — softer serif, higher legibility
-    C (newsstand)· Newsstand Contrast · Instrument Serif + Inter  — high-contrast, max screen clarity
-    D (swiss)    · Swiss Modern       · General Sans + Switzer    — sans-only, tech-forward
-  All four stylesheets are loaded up front so every scheme paints with the correct
-  fonts (no FOUT). The active scheme is selected by swapping the --font-* CSS variables.
--->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,200..900,0..100,0..1&family=Manrope:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter+Tight:ital,wght@0,300..700;1,400..600&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300..700&display=swap" />
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=switzer@300,400,500,600,700&display=swap" />
-
-<script>
-  // Select an active typography scheme by swapping --font-display / --font-body.
-  // Fonts themselves are already loaded via the four <link> tags above.
-  (function () {
-    var t = (new URLSearchParams(location.search).get("type") || "default").toLowerCase();
-    var vars = {
-      "default":   { d: '"Fraunces", "Times New Roman", serif',         b: '"Manrope", -apple-system, BlinkMacSystemFont, system-ui, sans-serif' },
-      "editorial": { d: '"Newsreader", "Times New Roman", serif',       b: '"Inter Tight", -apple-system, BlinkMacSystemFont, system-ui, sans-serif' },
-      "newsstand": { d: '"Instrument Serif", "Times New Roman", serif', b: '"Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif' },
-      "swiss":     { d: '"General Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
-                     b: '"Switzer", -apple-system, BlinkMacSystemFont, system-ui, sans-serif' }
-    };
-    var key = vars[t] ? t : "default";
-    var v = vars[key];
-    // Inline style on <html> outranks any later :root rule in a stylesheet,
-    // so the override survives even though the main <style> is parsed after this script.
-    document.documentElement.style.setProperty("--font-display", v.d);
-    document.documentElement.style.setProperty("--font-body", v.b);
-    document.documentElement.setAttribute("data-type", key);
-  })();
-</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&f[]=switzer@300,400,500,600,700&display=swap" />
 
 <style>
 /* =========================================================================
-   NITSOF — refresh preview
-   A single-file directional concept. Not production code.
+   NITSOF — Swiss Modern preview (standalone variant)
+   Font: General Sans (display) + Switzer (body)
    ========================================================================= */
 
 :root {
@@ -69,8 +36,8 @@
   --pad: clamp(1.25rem, 4vw, 3rem);
   --max: 1440px;
 
-  --font-display: "Fraunces", "Times New Roman", serif;
-  --font-body:    "Manrope", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: "General Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-body:    "Switzer", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
@@ -84,12 +51,11 @@ body {
   background: var(--cream);
   color: var(--ink);
   overflow-x: hidden;
-  font-feature-settings: "ss01", "cv02", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle warm grain that ties the cream canvas together */
+/* Subtle warm grain */
 body::before {
   content: "";
   position: fixed;
@@ -105,6 +71,29 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
 
 ::selection { background: var(--cobalt); color: var(--cream); }
+
+/* -------------------------------------------------------------------------
+   VARIANT BADGE — top-left indicator for review context
+   ------------------------------------------------------------------------- */
+.variant-badge {
+  position: fixed;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  background: var(--cobalt);
+  color: var(--cream);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
 
 /* -------------------------------------------------------------------------
    TICKER
@@ -166,10 +155,10 @@ button { font: inherit; cursor: pointer; }
 }
 .wordmark {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: baseline;
   gap: 0.4rem;
@@ -263,18 +252,16 @@ button { font: inherit; cursor: pointer; }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 1;
+  font-weight: 700;
   font-size: clamp(2.8rem, 8.4vw, 8.5rem);
   line-height: 0.95;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   color: var(--ink);
   text-wrap: balance;
 }
 .hero h1 em {
-  font-style: italic;
+  font-style: normal;
   font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
   color: var(--cobalt);
 }
 .hero h1 .underline {
@@ -317,13 +304,13 @@ button { font: inherit; cursor: pointer; }
 }
 .meta-value {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
   letter-spacing: -0.01em;
 }
-.meta-value.serif-bigger {
-  font-size: 1.25rem;
-  font-variation-settings: "opsz" 30;
+.meta-value.big {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .hero-actions {
@@ -407,14 +394,13 @@ button { font: inherit; cursor: pointer; }
 }
 .principle h3 {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-variation-settings: "opsz" 144, "WONK" 1;
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   margin-bottom: 1rem;
 }
-.principle h3 em { font-style: italic; color: var(--cobalt); font-weight: 300; }
+.principle h3 em { font-style: normal; color: var(--cobalt); font-weight: 300; }
 .principle p {
   font-size: 0.95rem;
   color: var(--ink-soft);
@@ -451,14 +437,13 @@ button { font: inherit; cursor: pointer; }
 }
 .section-head h2 {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-variation-settings: "opsz" 144;
+  font-weight: 700;
   font-size: clamp(2rem, 5vw, 3.5rem);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   line-height: 1;
   text-wrap: balance;
 }
-.section-head h2 em { font-style: italic; color: var(--cobalt); font-weight: 300; }
+.section-head h2 em { font-style: normal; color: var(--cobalt); font-weight: 300; }
 .section-head .aside {
   font-size: 0.9rem;
   max-width: 26ch;
@@ -500,13 +485,13 @@ button { font: inherit; cursor: pointer; }
 }
 .cap h3 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-variation-settings: "opsz" 144;
-  font-size: 1.55rem;
+  font-weight: 600;
+  font-size: 1.5rem;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   margin-top: auto;
 }
+.cap h3 em { font-style: normal; color: inherit; }
 .cap-desc {
   font-size: 0.92rem;
   color: var(--ink-soft);
@@ -535,7 +520,6 @@ button { font: inherit; cursor: pointer; }
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  group: case;
 }
 .case-frame {
   position: relative;
@@ -592,7 +576,7 @@ button { font: inherit; cursor: pointer; }
 .checkout-title {
   font-family: var(--font-display);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
   display: flex;
   justify-content: space-between;
@@ -634,8 +618,8 @@ button { font: inherit; cursor: pointer; }
 .rate-price {
   font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* SKU manager mock dashboard */
@@ -653,7 +637,7 @@ button { font: inherit; cursor: pointer; }
   display: flex; justify-content: space-between; align-items: baseline;
   font-family: var(--font-display);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 .dash-head small {
   font-family: var(--font-mono);
@@ -716,10 +700,9 @@ button { font: inherit; cursor: pointer; }
 }
 .case-name {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-variation-settings: "opsz" 144;
+  font-weight: 600;
   font-size: 1.65rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 .case-desc { color: var(--ink-soft); font-size: 0.95rem; max-width: 50ch; }
@@ -792,14 +775,13 @@ button { font: inherit; cursor: pointer; }
 }
 .step h4 {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-variation-settings: "opsz" 100;
-  font-size: 1.55rem;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
   line-height: 1.05;
   color: var(--cream);
 }
-.step h4 em { color: var(--signal); font-style: italic; font-weight: 300; }
+.step h4 em { color: var(--signal); font-style: normal; font-weight: 300; }
 .step p {
   font-size: 0.9rem;
   color: color-mix(in srgb, var(--cream) 65%, transparent);
@@ -824,16 +806,15 @@ button { font: inherit; cursor: pointer; }
 .pullquote blockquote {
   font-family: var(--font-display);
   font-weight: 300;
-  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
   font-size: clamp(1.8rem, 4.5vw, 3.4rem);
   line-height: 1.05;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 .pullquote blockquote em {
-  font-style: italic;
+  font-style: normal;
   color: var(--cobalt);
-  font-weight: 300;
+  font-weight: 700;
 }
 .attribution {
   border-top: 1px solid var(--ink);
@@ -844,7 +825,7 @@ button { font: inherit; cursor: pointer; }
 }
 .attribution .name {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   letter-spacing: -0.01em;
 }
@@ -908,14 +889,13 @@ button { font: inherit; cursor: pointer; }
 
 .cta h2 {
   font-family: var(--font-display);
-  font-weight: 350;
-  font-variation-settings: "opsz" 144, "WONK" 1;
+  font-weight: 700;
   font-size: clamp(2.2rem, 6vw, 5rem);
   line-height: 0.95;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   text-wrap: balance;
 }
-.cta h2 em { font-style: italic; color: var(--signal); font-weight: 300; }
+.cta h2 em { font-style: normal; color: var(--signal); font-weight: 300; }
 .cta .lead { color: color-mix(in srgb, var(--cream) 75%, transparent); max-width: 36ch; margin-top: 1.5rem; }
 
 .cta-aside {
@@ -938,7 +918,7 @@ button { font: inherit; cursor: pointer; }
   letter-spacing: -0.01em;
   font-size: clamp(1.2rem, 2.2vw, 1.6rem);
   color: var(--cream);
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 0.4rem;
   border-bottom: 1px solid color-mix(in srgb, var(--cream) 30%, transparent);
   padding-bottom: 0.7rem;
@@ -1003,72 +983,12 @@ button { font: inherit; cursor: pointer; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
-
-/* -------------------------------------------------------------------------
-   TYPE SWITCHER — preview-only chrome (?type=...)
-   Docks bottom-right like a dev tool — never collides with site nav.
-   ------------------------------------------------------------------------- */
-.type-switcher {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 80;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.55rem;
-  background: rgba(244, 239, 230, 0.94);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(10, 9, 8, 0.14);
-  border-radius: 999px;
-  box-shadow: 0 14px 40px -18px rgba(10, 9, 8, 0.45);
-  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  max-width: calc(100vw - 2rem);
-}
-.type-switcher__label {
-  padding: 0 0.45rem 0 0.3rem;
-  border-right: 1px solid rgba(10, 9, 8, 0.14);
-  white-space: nowrap;
-}
-.type-switcher a {
-  text-decoration: none;
-  padding: 0.32rem 0.6rem;
-  border-radius: 999px;
-  color: var(--ink-mute);
-  white-space: nowrap;
-  transition: background 160ms ease, color 160ms ease;
-}
-.type-switcher a:hover { color: var(--ink); background: rgba(10, 9, 8, 0.06); }
-.type-switcher a[aria-current="true"] {
-  background: var(--ink);
-  color: var(--cream);
-}
-@media (max-width: 760px) {
-  .type-switcher {
-    left: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-size: 0.6rem;
-  }
-  .type-switcher__label { display: none; }
-}
 </style>
 </head>
 <body>
 
-<!-- TYPE SWITCHER (preview affordance — not part of the proposed UI) -------- -->
-<nav class="type-switcher" aria-label="Typography preview switcher">
-  <span class="type-switcher__label">Type</span>
-  <a data-type="default"   data-title="Fraunces + Manrope">A · Editorial Bold</a>
-  <a data-type="editorial" data-title="Newsreader + Inter Tight">B · Editorial Calm</a>
-  <a data-type="newsstand" data-title="Instrument Serif + Inter">C · Newsstand</a>
-  <a data-type="swiss"     data-title="General Sans + Switzer">D · Swiss Modern</a>
-</nav>
+<!-- VARIANT BADGE ---------------------------------------------------------- -->
+<div class="variant-badge" aria-hidden="true">D · Swiss Modern — General Sans + Switzer</div>
 
 <!-- TICKER ----------------------------------------------------------------- -->
 <div class="ticker" aria-hidden="true">
@@ -1126,7 +1046,7 @@ button { font: inherit; cursor: pointer; }
     <div class="meta-row">
       <div>
         <div class="meta-label">Studio</div>
-        <div class="meta-value serif-bigger">NITSOF</div>
+        <div class="meta-value big">NITSOF</div>
       </div>
       <div>
         <div class="meta-label">Est.</div>
@@ -1192,7 +1112,7 @@ button { font: inherit; cursor: pointer; }
     <article class="cap reveal">
       <span class="cap-num">01 / Strategy</span>
       <svg class="cap-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <h3>Product <em>archaeology</em>.</h3>
+      <h3>Product archaeology.</h3>
       <p class="cap-desc">We map what's actually there before adding anything new — most teams already have 70% of what they need, just badly arranged.</p>
     </article>
     <article class="cap reveal">
@@ -1204,7 +1124,7 @@ button { font: inherit; cursor: pointer; }
     <article class="cap reveal">
       <span class="cap-num">03 / Ship</span>
       <svg class="cap-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <h3>Production from <em>day one</em>.</h3>
+      <h3>Production from day one.</h3>
       <p class="cap-desc">Every commit deploys. No staging-forever environments — real users, real load, measured from the first week.</p>
     </article>
     <article class="cap reveal">
@@ -1336,7 +1256,7 @@ button { font: inherit; cursor: pointer; }
 <!-- PULL QUOTE / TESTIMONIAL ---------------------------------------------- -->
 <section class="pullquote" id="about">
   <blockquote class="reveal">
-    “NITSOF cut our expected delivery timeline in <em>half</em>. The AI-first approach isn't a pitch — it's just how they actually work, every day, every meeting.”
+    "NITSOF cut our expected delivery timeline in <em>half</em>. The AI-first approach isn't a pitch — it's just how they actually work, every day, every meeting."
   </blockquote>
   <div class="attribution reveal">
     <div class="name">James Harlow</div>
@@ -1373,7 +1293,7 @@ button { font: inherit; cursor: pointer; }
 <footer class="footer">
   <span>© 2026 NITSOF · All rights reserved</span>
   <span><a href="/privacy">Privacy</a> · <a href="mailto:hello@nitsof.com">hello@nitsof.com</a></span>
-  <span>Refresh preview · v0.1</span>
+  <span>Swiss Modern preview · v0.1</span>
 </footer>
 
 <script>
@@ -1385,7 +1305,6 @@ button { font: inherit; cursor: pointer; }
   if (STATIC) {
     els.forEach(el => el.classList.add("in"));
   } else {
-    // Stagger reveal on scroll
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.isIntersecting) {
@@ -1396,19 +1315,6 @@ button { font: inherit; cursor: pointer; }
     }, { rootMargin: "-8% 0px -8% 0px", threshold: 0.05 });
     els.forEach(el => io.observe(el));
   }
-
-  // Type switcher: each chip is a same-page link that swaps the ?type= param
-  // while preserving anything else (e.g. ?static=1).
-  const active = (document.documentElement.getAttribute("data-type") || "default");
-  document.querySelectorAll(".type-switcher a[data-type]").forEach(a => {
-    const t = a.getAttribute("data-type");
-    const next = new URLSearchParams(params);
-    if (t === "default") next.delete("type"); else next.set("type", t);
-    const qs = next.toString();
-    a.href = location.pathname + (qs ? "?" + qs : "") + location.hash;
-    a.title = a.getAttribute("data-title") || "";
-    if (t === active) a.setAttribute("aria-current", "true");
-  });
 </script>
 </body>
 </html>
