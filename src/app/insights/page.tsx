@@ -12,59 +12,57 @@ export default function InsightsPage() {
   const posts = getAllInsights();
 
   return (
-    <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-24 lg:px-8">
-      <div className="max-w-2xl">
-        <p className="text-sm font-medium uppercase tracking-widest text-blue-400">
-          Insights
-        </p>
-        <h1 className="mt-3 text-4xl font-bold text-white sm:text-5xl">
-          Thinking out loud
-        </h1>
-        <p className="mt-4 text-lg text-gray-400">
-          Notes on software delivery, AI-native development, and building
-          products that last.
-        </p>
-      </div>
+    <div className="insights-page">
+      <p
+        style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: "11px",
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+          color: "var(--cobalt)",
+          marginBottom: "0.75rem",
+        }}
+      >
+        &sect; Insights
+      </p>
+      <h1 className="insights-page-heading">
+        Thinking out <em>loud</em>.
+      </h1>
+      <p className="insights-page-sub">
+        Notes on software delivery, AI-native development, and building
+        products that last.
+      </p>
 
-      <div className="mt-16 divide-y divide-gray-800">
+      <div className="insights-post-list">
         {posts.map((post) => (
-          <article key={post.slug} className="py-10 first:pt-0">
-            <div className="flex items-center gap-4">
-              <span className="text-xs font-medium uppercase tracking-widest text-blue-400">
-                {post.category}
-              </span>
-              <span className="text-xs text-gray-600">·</span>
-              <time className="text-xs text-gray-500" dateTime={post.date}>
+          <article key={post.slug} className="insights-post">
+            <div className="insights-post-meta">
+              <span className="insights-post-cat">{post.category}</span>
+              <span style={{ color: "var(--ink-mute)", fontSize: "10px" }}>&middot;</span>
+              <time className="insights-post-date" dateTime={post.date}>
                 {formatDate(post.date)}
               </time>
             </div>
-            <h2 className="mt-3 text-2xl font-bold text-white">
-              <Link
-                href={`/insights/${post.slug}`}
-                className="transition hover:text-blue-400"
-              >
-                {post.title}
-              </Link>
-            </h2>
-            <p className="mt-3 text-gray-400">{post.excerpt}</p>
             <Link
               href={`/insights/${post.slug}`}
-              className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300"
+              className="insights-post-title"
             >
+              {post.title}
+            </Link>
+            <p className="insights-post-excerpt">{post.excerpt}</p>
+            <Link href={`/insights/${post.slug}`} className="insights-read-more">
               Read more
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="12"
+                height="12"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
+                <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </Link>
           </article>
