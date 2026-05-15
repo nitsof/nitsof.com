@@ -23,10 +23,19 @@ decisions can be evaluated before any production code is written.
 | Cobalt       | `#1740FF`  | Single saturated accent. Editorial, sharp, replaces the rainbow gradient  |
 | Signal lime  | `#CAFF39`  | Status / "live" / motion accent — used very sparingly                     |
 
-**Display:** Fraunces (variable serif, optical-sized, characterful italic
-for emphasis).
-**Body:** Manrope (variable geometric humanist sans).
-**Mono:** JetBrains Mono (technical labels, ticker, metadata).
+## Typography schemes
+
+The preview supports four switchable typography schemes — toggle them
+via the chip in the top-right corner, or append `?type=` to the URL.
+
+| Key             | Scheme              | Display fonts            | Body / UI                  |
+|-----------------|---------------------|--------------------------|----------------------------|
+| _(default)_ / A | Editorial Bold      | Fraunces                 | Manrope                    |
+| `editorial` / B | Editorial Calm      | Newsreader               | Inter Tight                |
+| `newsstand` / C | Newsstand Contrast  | Instrument Serif         | Inter                      |
+| `swiss` / D     | Swiss Modern        | General Sans             | Switzer                    |
+
+Mono (JetBrains Mono) is shared across all schemes.
 
 ## Notes for review
 
