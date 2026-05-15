@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "NITSOF – AI Software Delivery for Businesses",
   description:
-    "NITSOF helps businesses of all sizes innovate and ship software faster using AI. Explore our products and see what AI-powered software delivery looks like in practice.",
+    "NITSOF helps businesses innovate and ship software faster using AI. See our products and AI-powered delivery in action.",
 };
 
 export default function RootLayout({
