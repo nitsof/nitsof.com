@@ -29,8 +29,8 @@
   --pad: clamp(1.25rem, 4vw, 3rem);
   --max: 1440px;
 
-  --font-display: "General Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-body:    "Switzer", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: var(--font-general-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-body:    var(--font-switzer), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono:    var(--font-jetbrains), "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
@@ -1185,6 +1185,7 @@ body.past-hero .hamburger span { background: var(--ink); }
 .reveal:nth-child(4) { transition-delay: 0.24s; }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

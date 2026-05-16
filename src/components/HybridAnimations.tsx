@@ -42,6 +42,7 @@ export default function HybridAnimations() {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       progressBar.style.width = total > 0 ? (scrolled / total) * 100 + "%" : "0%";
     };
+    handleScrollProgress();
     window.addEventListener("scroll", handleScrollProgress, { passive: true });
 
     // Reveal animations via IntersectionObserver

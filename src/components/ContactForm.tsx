@@ -44,7 +44,7 @@ export default function ContactForm() {
       window.location.href = `mailto:hello@nitsof.com?subject=${encodeURIComponent(
         "Project Brief — " + name
       )}&body=${encodeURIComponent(body)}`;
-      setStatus("success");
+      setStatus("idle");
     }
   }
 
