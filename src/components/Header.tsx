@@ -2,89 +2,122 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/#portfolio", label: "Portfolio" },
-  { href: "/#about", label: "About" },
-];
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex-shrink-0">
-            <Link href="/">
-              <Image
-                src="/images/logo-graphic.png"
-                alt="NITSOF Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-            </Link>
-          </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                      isActive
-                        ? "bg-gray-800 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
+    <>
+      {/* Scrolling ticker — home page flavour, always visible */}
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker-track">
+          <span className="ticker-item ticker-item--live">
+            <span className="ticker-dot" />
+            <strong>Now shipping</strong> · Carrier Rates v2.1 — live in 240+ stores
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-dot" />
+            AI-augmented delivery · est. 2024
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-dot" />
+            Currently accepting Q3 engagements
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-dot" />
+            Software ↔ thought · velocity 4.2×
+          </span>
+          {/* Duplicate set for seamless loop */}
+          <span className="ticker-item ticker-item--live">
+            <span className="ticker-dot" />
+            <strong>Now shipping</strong> · Carrier Rates v2.1 — live in 240+ stores
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-dot" />
+            AI-augmented delivery · est. 2024
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-dot" />
+            Currently accepting Q3 engagements
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-dot" />
+            Software ↔ thought · velocity 4.2×
+          </span>
         </div>
       </div>
 
-      {isOpen && (
-        <div className="md:hidden" id="mobile-menu">
-          <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </header>
+      {/* Sticky nav */}
+      <header className="nav">
+        <Link className="wordmark" href="/">
+          NITSOF<span className="dot" aria-hidden="true" />
+        </Link>
+
+        <nav className="nav-links" aria-label="Main navigation">
+          <Link href="/#capabilities">Capabilities</Link>
+          <Link href="/#work">Work</Link>
+          <Link href="/#process">Process</Link>
+          <Link href="/#about">Studio</Link>
+          <Link href="/insights">Insights</Link>
+        </nav>
+
+        <Link className="nav-cta" href="/#contact">
+          Start a project
+          <svg
+            className="arrow"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </Link>
+
+        <button
+          className={`hamburger${menuOpen ? " open" : ""}`}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </header>
+
+      {/* Full-screen mobile menu */}
+      <nav
+        className={`mobile-menu${menuOpen ? " open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        <Link href="/#capabilities" onClick={closeMenu}>Capabilities</Link>
+        <Link href="/#work" onClick={closeMenu}>Work</Link>
+        <Link href="/#process" onClick={closeMenu}>Process</Link>
+        <Link href="/#about" onClick={closeMenu}>Studio</Link>
+        <Link href="/insights" onClick={closeMenu}>Insights</Link>
+        <Link className="menu-cta" href="/#contact" onClick={closeMenu}>
+          Start a project
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </nav>
+    </>
   );
 }

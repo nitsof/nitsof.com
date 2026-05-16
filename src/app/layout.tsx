@@ -1,23 +1,62 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HybridAnimations from "@/components/HybridAnimations";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500"],
   subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const generalSans = localFont({
+  src: [
+    { path: "./fonts/general-sans-300.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/general-sans-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/general-sans-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/general-sans-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/general-sans-700.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-general-sans",
+  display: "swap",
+});
+
+const switzer = localFont({
+  src: [
+    { path: "./fonts/switzer-300.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/switzer-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/switzer-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/switzer-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/switzer-700.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-switzer",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "NITSOF – AI Software Delivery for Businesses",
+  title: "NITSOF — Software, shipped at the speed of thought.",
   description:
-    "NITSOF helps businesses innovate and ship software faster using AI. See our products and AI-powered delivery in action.",
+    "An AI-native software studio. Four disciplines, one team. Australia · Worldwide. Currently accepting new engagements.",
+  openGraph: {
+    type: "website",
+    url: "https://nitsof.com",
+    title: "NITSOF — Software, shipped at the speed of thought.",
+    description:
+      "An AI-native software studio. Australia · Worldwide. Currently accepting new engagements.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NITSOF — Software, shipped at the speed of thought.",
+    description: "An AI-native software studio. Australia · Worldwide.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#07080B",
 };
 
 export default function RootLayout({
@@ -26,19 +65,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} bg-gray-900`}
-    >
-      <body className="flex min-h-screen flex-col text-gray-200">
+    <html lang="en" className={`${jetbrainsMono.variable} ${generalSans.variable} ${switzer.variable}`}>
+      <body>
+        <div id="scroll-progress" aria-hidden="true" />
+        <div className="grain-overlay" aria-hidden="true" />
+        <HybridAnimations />
         <Header />
-        <main
-          className="relative flex-grow bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-background.jpg')" }}
-        >
-          <div className="absolute inset-0 bg-black/75 sm:bg-transparent sm:from-black/95 sm:to-black/25 sm:bg-gradient-to-r" />
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
