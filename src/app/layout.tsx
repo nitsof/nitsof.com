@@ -66,9 +66,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${generalSans.variable} ${switzer.variable}`}>
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      </head>
       <body>
         <div id="scroll-progress" aria-hidden="true" />
         <div className="grain-overlay" aria-hidden="true" />

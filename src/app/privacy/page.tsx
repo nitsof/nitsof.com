@@ -7,8 +7,6 @@ export const metadata: Metadata = {
     "NITSOF's privacy policy — what data we collect, how we use it, and how we protect it.",
 };
 
-const section = (title: string, children: React.ReactNode) => ({ title, children });
-
 export default function PrivacyPolicy() {
   return (
     <div style={{ background: "var(--cream)", color: "var(--ink)", paddingTop: "6rem" }}>

@@ -95,9 +95,9 @@ export default function CarrierRatesFAQ() {
         }}
       >
         <div style={{ maxWidth: "52rem" }}>
-          {faqs.map((faq, i) => (
+          {faqs.map((faq) => (
             <div
-              key={i}
+              key={faq.q}
               style={{
                 borderBottom: "1px solid var(--rule)",
                 padding: "2rem 0",
