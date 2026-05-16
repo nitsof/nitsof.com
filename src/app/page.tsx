@@ -88,18 +88,6 @@ export default function Home() {
       {/* ── Bridge ────────────────────────────────────────────────────── */}
       <div className="bridge" id="hero-bridge" aria-hidden="true" />
 
-      {/* ── Client Strip ──────────────────────────────────────────────── */}
-      <div className="clients reveal">
-        <span className="clients-label">Trusted by</span>
-        <div className="clients-logos">
-          <span className="client-name">Apex Logistics</span>
-          <span className="client-name">Stackborn</span>
-          <span className="client-name">Mercia Health</span>
-          <span className="client-name">Nordpath Retail</span>
-          <span className="client-name">LiveCarrierRates</span>
-        </div>
-      </div>
-
       {/* ── Manifesto ─────────────────────────────────────────────────── */}
       <section className="manifesto">
         <div className="manifesto-inner">
@@ -403,27 +391,12 @@ export default function Home() {
       {/* ── Pull Quote ────────────────────────────────────────────────── */}
       <section className="pullquote" id="about">
         <blockquote className="reveal">
-          &ldquo;NITSOF cut our expected delivery timeline in <em>half</em>. The AI-first
-          approach isn&rsquo;t a pitch — it&rsquo;s just how they actually work, every day,
-          every meeting.&rdquo;
+          Software that ships in weeks, not months. That&rsquo;s not a tagline —
+          it&rsquo;s the <em>only</em> way we work.
         </blockquote>
         <div className="attribution reveal">
-          <div className="name">James Harlow</div>
-          <div className="role">CTO · Apex Logistics Group</div>
-          <div className="others">
-            <div className="o">
-              <span>Priya Mehta</span>
-              <span>Stackborn</span>
-            </div>
-            <div className="o">
-              <span>Daniel Osei</span>
-              <span>Mercia Health</span>
-            </div>
-            <div className="o" style={{ border: 0 }}>
-              <span>Maya Lindgren</span>
-              <span>Nordpath Retail</span>
-            </div>
-          </div>
+          <div className="name">NITSOF</div>
+          <div className="role">Australia · Worldwide</div>
         </div>
       </section>
 
