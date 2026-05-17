@@ -22,6 +22,7 @@ export default function ContactForm() {
         });
         if (res.ok) {
           setStatus("success");
+          form.reset();
         } else {
           setStatus("error");
         }
@@ -31,10 +32,12 @@ export default function ContactForm() {
     } else {
       // Fallback: pre-fill a mailto link (works without a backend)
       const name = (data.get("name") as string) || "";
+      const email = (data.get("email") as string) || "";
       const company = (data.get("company") as string) || "";
       const message = (data.get("message") as string) || "";
       const body = [
         `Name: ${name}`,
+        email ? `Email: ${email}` : "",
         company ? `Company: ${company}` : "",
         "",
         message,
@@ -67,6 +70,17 @@ export default function ContactForm() {
           placeholder="Alex Chen"
           required
           autoComplete="name"
+        />
+      </div>
+      <div className="cta-field">
+        <label htmlFor="cf-email">Email address</label>
+        <input
+          id="cf-email"
+          name="email"
+          type="email"
+          placeholder="alex@acmecorp.com"
+          required
+          autoComplete="email"
         />
       </div>
       <div className="cta-field">
