@@ -52,12 +52,12 @@ export default function Home() {
           </h1>
 
           <div className="hero-actions reveal">
-            <a className="btn btn--primary" href="#work">
-              See selected work
+            <a className="btn btn--primary" href="#contact">
+              Begin a project
               <ArrowIcon />
             </a>
-            <a className="btn btn--ghost" href="#contact">
-              Begin a project
+            <a className="btn btn--ghost" href="#work">
+              See selected work
             </a>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function Home() {
           </div>
           <div className="hero-stat">
             <span className="stat-label">Velocity</span>
-            <span className="stat-value">4.2× faster delivery</span>
+            <span className="stat-value">4.2× vs. agencies</span>
           </div>
         </div>
       </section>
@@ -246,7 +246,8 @@ export default function Home() {
               <h3 className="case-name">Live Carrier Rates</h3>
               <p className="case-desc">
                 A published Shopify app that surfaces real-time carrier pricing inside checkout
-                — the moment shoppers decide to buy or bail.
+                — the moment shoppers decide to buy or bail. Trusted by 240+ Shopify stores
+                across 6 carriers.
               </p>
               <a
                 className="case-link"
@@ -353,36 +354,36 @@ export default function Home() {
           <div className="timeline">
             <article className="step reveal">
               <span className="step-num">Week 01</span>
+              <h4>
+                Frame the <em>real</em> problem.
+              </h4>
               <p>
                 We map the system, the team, and the constraints. Output: one page that everyone
                 signs.
               </p>
-              <h4>
-                Frame the <em>real</em> problem.
-              </h4>
             </article>
             <article className="step reveal">
               <span className="step-num">Week 02</span>
+              <h4>Ship something that runs.</h4>
               <p>
                 First commit on day two. By Friday it&rsquo;s in front of users — even if rough.
               </p>
-              <h4>Ship something that runs.</h4>
             </article>
             <article className="step reveal">
               <span className="step-num">Week 03</span>
-              <p>
-                Measure, cut, sharpen. AI handles the boilerplate so humans do the judgement work.
-              </p>
               <h4>
                 Refine in <em>public</em>.
               </h4>
+              <p>
+                Measure, cut, sharpen. AI handles the boilerplate so humans do the judgement work.
+              </p>
             </article>
             <article className="step reveal">
               <span className="step-num">Week 04+</span>
+              <h4>Hand over, or stay close.</h4>
               <p>
                 Permanent ownership transfer or a monthly retainer — your call, every quarter.
               </p>
-              <h4>Hand over, or stay close.</h4>
             </article>
           </div>
         </div>

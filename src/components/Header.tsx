@@ -59,7 +59,7 @@ export default function Header() {
           <Link href="/#capabilities">Capabilities</Link>
           <Link href="/#work">Work</Link>
           <Link href="/#process">Process</Link>
-          <Link href="/#about">Studio</Link>
+          <Link href="/#about">Ethos</Link>
           <Link href="/insights">Insights</Link>
         </nav>
 
@@ -100,7 +100,7 @@ export default function Header() {
         <Link href="/#capabilities" onClick={closeMenu}>Capabilities</Link>
         <Link href="/#work" onClick={closeMenu}>Work</Link>
         <Link href="/#process" onClick={closeMenu}>Process</Link>
-        <Link href="/#about" onClick={closeMenu}>Studio</Link>
+        <Link href="/#about" onClick={closeMenu}>Ethos</Link>
         <Link href="/insights" onClick={closeMenu}>Insights</Link>
         <Link className="menu-cta" href="/#contact" onClick={closeMenu}>
           Start a project

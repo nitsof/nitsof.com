@@ -3,6 +3,19 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="site-footer">
+      <nav className="footer-links">
+        <Link href="/insights">Insights</Link>
+        <a
+          href="https://apps.shopify.com/live-carrier-rates"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Carrier Rates
+        </a>
+      </nav>
+      <Link className="footer-cta" href="/#contact">
+        Start a project →
+      </Link>
       <span className="footer-flag">
         <svg
           width="14"
