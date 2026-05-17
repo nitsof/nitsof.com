@@ -2,15 +2,36 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Live Carrier Rates — Real-time Shopify Shipping Rates | NITSOF",
+  title: "Shopify Carrier Rates App – Live Shipping at Checkout | NITSOF",
   description:
-    "Live Carrier Rates connects your Shopify store to major carriers for real-time, accurate shipping rates at checkout. No more flat rates or lost margin.",
+    "Show accurate, real-time carrier rates at checkout with NITSOF. Connect FedEx, UPS, USPS and more to your Shopify store. Fewer abandoned carts. Free to try.",
   openGraph: {
-    title: "Live Carrier Rates — Real-time Shopify Shipping Rates",
+    title: "Shopify Carrier Rates App – Live Shipping at Checkout | NITSOF",
     description:
-      "Connect your Shopify store to real carrier APIs. Show live rates at checkout from Australia Post, FedEx, UPS, USPS, DHL and more.",
+      "Show accurate, real-time carrier rates at checkout with NITSOF. Connect FedEx, UPS, USPS and more to your Shopify store. Fewer abandoned carts. Free to try.",
     url: "https://nitsof.com/carrier-rates",
   },
+};
+
+const softwareApplicationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Live Carrier Rates",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Shopify",
+  url: "https://apps.shopify.com/live-carrier-rates",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "NITSOF",
+    url: "https://nitsof.com",
+  },
+  description:
+    "Show accurate, real-time carrier rates at checkout with NITSOF. Connect FedEx, UPS, USPS and more to your Shopify store. Fewer abandoned carts. Free to try.",
 };
 
 const carriers = [
@@ -46,6 +67,10 @@ const features = [
 export default function CarrierRatesPage() {
   return (
     <div style={{ background: "var(--cream)", color: "var(--ink)", paddingTop: "6rem" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationJsonLd) }}
+      />
       {/* Breadcrumb */}
       <nav
         aria-label="breadcrumb"

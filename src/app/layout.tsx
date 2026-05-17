@@ -38,20 +38,21 @@ const switzer = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NITSOF — Software, shipped at the speed of thought.",
+  title: "NITSOF – AI Software Delivery for Businesses",
   description:
-    "An AI-native software studio. Four disciplines, one team. Australia · Worldwide. Currently accepting new engagements.",
+    "NITSOF helps businesses of all sizes innovate and ship software faster using AI. Explore our products and see what AI-powered software delivery looks like in practice.",
   openGraph: {
     type: "website",
     url: "https://nitsof.com",
-    title: "NITSOF — Software, shipped at the speed of thought.",
+    title: "NITSOF – AI Software Delivery for Businesses",
     description:
-      "An AI-native software studio. Australia · Worldwide. Currently accepting new engagements.",
+      "NITSOF helps businesses of all sizes innovate and ship software faster using AI. Explore our products and see what AI-powered software delivery looks like in practice.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "NITSOF — Software, shipped at the speed of thought.",
-    description: "An AI-native software studio. Australia · Worldwide.",
+    title: "NITSOF – AI Software Delivery for Businesses",
+    description:
+      "NITSOF helps businesses of all sizes innovate and ship software faster using AI. Explore our products and see what AI-powered software delivery looks like in practice.",
   },
 };
 
