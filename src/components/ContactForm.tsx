@@ -10,31 +10,31 @@ export default function ContactForm() {
     setStatus("submitting");
 
     const form = e.currentTarget;
-    const data = new FormData(form);
-    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
 
-    if (formspreeId) {
+    if (scriptUrl) {
       try {
-        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        // no-cors: response is opaque but the POST goes through and the script runs
+        await fetch(scriptUrl, {
           method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
+          mode: "no-cors",
+          body: new FormData(form),
         });
-        if (res.ok) {
-          setStatus("success");
-        } else {
-          setStatus("error");
-        }
+        setStatus("success");
+        form.reset();
       } catch {
         setStatus("error");
       }
     } else {
-      // Fallback: pre-fill a mailto link (works without a backend)
+      // Fallback: pre-fill a mailto link
+      const data = new FormData(form);
       const name = (data.get("name") as string) || "";
+      const email = (data.get("email") as string) || "";
       const company = (data.get("company") as string) || "";
       const message = (data.get("message") as string) || "";
       const body = [
         `Name: ${name}`,
+        email ? `Email: ${email}` : "",
         company ? `Company: ${company}` : "",
         "",
         message,
@@ -67,6 +67,17 @@ export default function ContactForm() {
           placeholder="Alex Chen"
           required
           autoComplete="name"
+        />
+      </div>
+      <div className="cta-field">
+        <label htmlFor="cf-email">Email</label>
+        <input
+          id="cf-email"
+          name="email"
+          type="email"
+          placeholder="alex@acmecorp.com"
+          required
+          autoComplete="email"
         />
       </div>
       <div className="cta-field">
