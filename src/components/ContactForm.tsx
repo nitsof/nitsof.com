@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -11,30 +12,38 @@ export default function ContactForm() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
-    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 
-    if (formspreeId) {
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (serviceId && templateId && publicKey) {
       try {
-        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
-          method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
-        });
-        if (res.ok) {
-          setStatus("success");
-        } else {
-          setStatus("error");
-        }
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: (data.get("name") as string) || "",
+            from_email: (data.get("email") as string) || "",
+            company: (data.get("company") as string) || "",
+            message: (data.get("message") as string) || "",
+          },
+          publicKey
+        );
+        setStatus("success");
+        form.reset();
       } catch {
         setStatus("error");
       }
     } else {
       // Fallback: pre-fill a mailto link (works without a backend)
       const name = (data.get("name") as string) || "";
+      const email = (data.get("email") as string) || "";
       const company = (data.get("company") as string) || "";
       const message = (data.get("message") as string) || "";
       const body = [
         `Name: ${name}`,
+        email ? `Email: ${email}` : "",
         company ? `Company: ${company}` : "",
         "",
         message,
@@ -67,6 +76,17 @@ export default function ContactForm() {
           placeholder="Alex Chen"
           required
           autoComplete="name"
+        />
+      </div>
+      <div className="cta-field">
+        <label htmlFor="cf-email">Email address</label>
+        <input
+          id="cf-email"
+          name="email"
+          type="email"
+          placeholder="alex@acmecorp.com"
+          required
+          autoComplete="email"
         />
       </div>
       <div className="cta-field">
