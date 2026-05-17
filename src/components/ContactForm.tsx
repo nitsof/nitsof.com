@@ -14,14 +14,25 @@ export default function ContactForm() {
 
     if (scriptUrl) {
       try {
-        // no-cors: response is opaque but the POST goes through and the script runs
-        await fetch(scriptUrl, {
-          method: "POST",
-          mode: "no-cors",
-          body: new FormData(form),
+        // URLSearchParams sends as application/x-www-form-urlencoded — a "simple"
+        // CORS request that skips preflight and returns a readable response from GAS.
+        const data = new FormData(form);
+        const params = new URLSearchParams({
+          name: (data.get("name") as string) || "",
+          email: (data.get("email") as string) || "",
+          company: (data.get("company") as string) || "",
+          message: (data.get("message") as string) || "",
         });
-        setStatus("success");
-        form.reset();
+        const response = await fetch(scriptUrl, {
+          method: "POST",
+          body: params,
+        });
+        if (response.ok) {
+          setStatus("success");
+          form.reset();
+        } else {
+          setStatus("error");
+        }
       } catch {
         setStatus("error");
       }
