@@ -15,15 +15,32 @@ export default function Footer() {
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
+          <defs>
+            <clipPath id="au-canton">
+              <rect width="7" height="5.5" />
+            </clipPath>
+          </defs>
+          {/* Blue ensign background */}
           <rect width="14" height="11" rx="1" fill="#00008B" />
-          <line x1="0" y1="0" x2="14" y2="11" stroke="white" strokeWidth="1.8" />
-          <line x1="14" y1="0" x2="0" y2="11" stroke="white" strokeWidth="1.8" />
-          <line x1="0" y1="0" x2="14" y2="11" stroke="#CC0000" strokeWidth="1" />
-          <line x1="14" y1="0" x2="0" y2="11" stroke="#CC0000" strokeWidth="1" />
-          <rect y="4" width="14" height="3" fill="white" />
-          <rect x="5.5" y="0" width="3" height="11" fill="white" />
-          <rect y="4.5" width="14" height="2" fill="#CC0000" />
-          <rect x="6" y="0" width="2" height="11" fill="#CC0000" />
+          {/* Union Jack — upper-left canton only */}
+          <g clipPath="url(#au-canton)">
+            <line x1="0" y1="0" x2="7" y2="5.5" stroke="white" strokeWidth="1.8" />
+            <line x1="7" y1="0" x2="0" y2="5.5" stroke="white" strokeWidth="1.8" />
+            <line x1="0" y1="0" x2="7" y2="5.5" stroke="#CC0000" strokeWidth="1" />
+            <line x1="7" y1="0" x2="0" y2="5.5" stroke="#CC0000" strokeWidth="1" />
+            <rect y="2" width="7" height="1.5" fill="white" />
+            <rect x="2.75" y="0" width="1.5" height="5.5" fill="white" />
+            <rect y="2.25" width="7" height="1" fill="#CC0000" />
+            <rect x="3" y="0" width="1" height="5.5" fill="#CC0000" />
+          </g>
+          {/* Commonwealth Star (below canton, left side) */}
+          <circle cx="3.5" cy="8.5" r="0.7" fill="white" />
+          {/* Southern Cross — Gamma (top), Delta (upper-right), Beta (left), Alpha (bottom), Epsilon (small) */}
+          <circle cx="8.6" cy="2.8" r="0.55" fill="white" />
+          <circle cx="11.8" cy="3.6" r="0.55" fill="white" />
+          <circle cx="8.6" cy="6.2" r="0.6" fill="white" />
+          <circle cx="10.8" cy="9.2" r="0.65" fill="white" />
+          <circle cx="10.4" cy="5.5" r="0.35" fill="white" />
         </svg>
         Made in Australia
       </span>
