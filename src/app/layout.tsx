@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -68,6 +69,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${generalSans.variable} ${switzer.variable}`}>
       <body>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-15C8MLCLC5"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-15C8MLCLC5');
+          `}
+        </Script>
         <div id="scroll-progress" aria-hidden="true" />
         <div className="grain-overlay" aria-hidden="true" />
         <HybridAnimations />
